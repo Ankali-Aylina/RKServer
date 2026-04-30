@@ -14,8 +14,6 @@ out/
 *.exe
 *.out
 *.app
-*.a
-*.so
 *.dylib
 *.dll
 *.lib

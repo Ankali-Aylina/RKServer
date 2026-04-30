@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.11)
-project(rkserver)
+project(RKServer)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -96,7 +96,7 @@ include_directories(
 # 可执行文件
 # ============================================================================
 
-add_executable(rkserver
+add_executable(RKServer
     ${ALL_SOURCES}
 )
 
@@ -104,7 +104,7 @@ add_executable(rkserver
 # 链接库
 # ============================================================================
 
-target_link_libraries(rkserver
+target_link_libraries(RKServer
     ${Boost_LIBRARIES}                    # Boost 库（Crow 依赖）
     rkllmrt                               # RKLLM 运行时（LLM 推理）
     rknnrt                                # RKNN 运行时（Embedding 推理）
@@ -118,7 +118,7 @@ target_link_libraries(rkserver
 # ============================================================================
 
 # 启用编译警告
-target_compile_options(rkserver PRIVATE -Wall -Wextra)
+target_compile_options(RKServer PRIVATE -Wall -Wextra)
 
 # 调试模式：包含调试符号，关闭优化
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -DDEBUG")
@@ -130,4 +130,4 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
 # 安装配置
 # ============================================================================
 
-install(TARGETS rkserver DESTINATION bin)
+install(TARGETS RKServer DESTINATION bin)

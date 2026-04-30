@@ -1,10 +1,10 @@
-# rkserver
+# RKServer
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![C++](https://img.shields.io/badge/C%2B%2B-17-blue)](https://en.cppreference.com/w/cpp/17)
 [![Platform](https://img.shields.io/badge/Platform-RK3588-red)](https://www.rock-chips.com/)
 
-**rkserver** 是一个基于 Rockchip NPU（RK3588 系列）的高性能 LLM + Embedding 推理 HTTP 服务。提供 OpenAI 兼容的 Chat Completions API 和 Embeddings API，可无缝替代 OpenAI API，作为 AstrBot、NextChat 等应用的本地推理后端。
+**RKServer** 是一个基于 Rockchip NPU（RK3588 系列）的高性能 LLM + Embedding 推理 HTTP 服务。提供 OpenAI 兼容的 Chat Completions API 和 Embeddings API，可无缝替代 OpenAI API，作为 AstrBot、NextChat 等应用的本地推理后端。
 
 ---
 
@@ -70,8 +70,8 @@ curl -X POST http://localhost:8080/v1/embeddings \
 ### 1. 克隆并初始化子模块
 
 ```bash
-git clone https://github.com/your-username/rkserver.git
-cd rkserver
+git clone https://github.com/Ankali-Aylina/RKServer
+cd RKServer
 git submodule update --init --recursive
 ```
 
@@ -92,7 +92,7 @@ cmake --build build -j$(nproc)
 
 ```bash
 # 直接运行
-./build/rkserver
+./build/RKServer
 
 # 或安装为 systemd 服务
 sudo ./install-systemd-service.sh
@@ -142,7 +142,7 @@ sudo ./install-systemd-service.sh
 ## 项目结构
 
 ```
-rkserver/
+RKServer/
 ├── CMakeLists.txt              # CMake 构建配置
 ├── config.json                 # 服务配置文件
 ├── install-systemd-service.sh  # systemd 服务安装脚本
@@ -209,7 +209,7 @@ rkserver/
 | 字段         | 值                             |
 | ------------ | ------------------------------ |
 | 类型         | `openai_embedding`             |
-| API Base URL | `http://<rkserver-ip>:8080/v1` |
+| API Base URL | `http://<RKServer-ip>:8080/v1` |
 | API Key      | 留空或任意值                   |
 | Model        | `bge`（或 `minilm`）           |
 | Dimensions   | 与模型维度一致（如 `512`）     |
@@ -218,7 +218,7 @@ rkserver/
 
 在自定义 API 端点中填写：
 
-- API 地址：`http://<rkserver-ip>:8080/v1`
+- API 地址：`http://<RKServer-ip>:8080/v1`
 - API Key：任意值（rkserver 不验证）
 
 ## 许可证

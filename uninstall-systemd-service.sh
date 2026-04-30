@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# rkserver - systemd 服务卸载脚本
+# RKServer - systemd 服务卸载脚本
 #
 # 用法:
 #   sudo ./uninstall-systemd-service.sh                  # 卸载系统服务
@@ -14,7 +14,7 @@
 
 set -euo pipefail
 
-SERVICE_NAME="rkserver"
+SERVICE_NAME="RKServer"
 INSTALL_MODE="system"
 FORCE=false
 
@@ -234,7 +234,7 @@ print_step "5/5" "完成"
 
 echo ""
 echo -e "${CYAN}================================================"
-echo -e "  ${GREEN}${BOLD}✓  rkserver systemd 服务卸载完成${NC}"
+echo -e "  ${GREEN}${BOLD}✓  RKServer systemd 服务卸载完成${NC}"
 echo -e "${CYAN}================================================${NC}"
 echo ""
 echo -e "  ${BOLD}服务已从系统中完全移除。${NC}"

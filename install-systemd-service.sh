@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# rkserver - systemd 服务安装脚本
+# RKServer - systemd 服务安装脚本
 #
 # 用法:
 #   sudo ./install-systemd-service.sh                    # 使用默认路径安装
-#   sudo ./install-systemd-service.sh /opt/rkserver      # 指定可执行文件路径
+#   sudo ./install-systemd-service.sh /opt/RKServer      # 指定可执行文件路径
 #   sudo ./install-systemd-service.sh --user              # 安装为用户服务（无需 root）
 #
 # 选项:
@@ -13,9 +13,9 @@
 
 set -euo pipefail
 
-SERVICE_NAME="rkserver"
+SERVICE_NAME="RKServer"
 PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
-DEFAULT_EXEC_PATH="${PROJECT_DIR}/build/rkserver"
+DEFAULT_EXEC_PATH="${PROJECT_DIR}/build/RKServer"
 EXEC_PATH=""
 INSTALL_MODE="system"  # system 或 user
 
@@ -93,11 +93,11 @@ while [[ $# -gt 0 ]]; do
             echo "  --help        显示此帮助信息"
             echo ""
             echo "参数:"
-            echo "  可执行文件路径  指定 rkserver 可执行文件路径（可选）"
+            echo "  可执行文件路径  指定 RKServer 可执行文件路径（可选）"
             echo ""
             echo "示例:"
             echo "  sudo $0                              # 使用默认路径安装系统服务"
-            echo "  sudo $0 /opt/rkserver/bin/rkserver   # 指定路径安装系统服务"
+            echo "  sudo $0 /opt/RKServer/bin/RKServer   # 指定路径安装系统服务"
             echo "  $0 --user                            # 安装为用户服务"
             exit 0
             ;;
@@ -215,8 +215,8 @@ print_step "5/7" "生成 systemd 服务文件"
 
 cat > "$SERVICE_FILE" << EOF
 [Unit]
-Description=rkserver - RK Server (Rockchip NPU LLM Inference)
-Documentation=https://github.com/rockchip-linux/rkserver
+Description=RKServer - RK Server (Rockchip NPU LLM Inference)
+Documentation=https://github.com/rockchip-linux/RKServer
 After=network-online.target
 Wants=network-online.target
 
@@ -233,7 +233,7 @@ Restart=always
 RestartSec=5
 StandardOutput=journal
 StandardError=journal
-SyslogIdentifier=rkserver
+SyslogIdentifier=RKServer
 
 # 安全加固
 NoNewPrivileges=true
@@ -287,7 +287,7 @@ echo ""
 # 完成
 # ============================================================
 echo -e "${CYAN}================================================"
-echo -e "  ${GREEN}${BOLD}✓  rkserver systemd 服务安装完成${NC}"
+echo -e "  ${GREEN}${BOLD}✓  RKServer systemd 服务安装完成${NC}"
 echo -e "${CYAN}================================================${NC}"
 echo ""
 echo -e "  ${BOLD}常用命令:${NC}"

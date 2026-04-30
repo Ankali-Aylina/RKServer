@@ -1,0 +1,71 @@
+{
+  "models": {
+    "llm": {
+      "enabled": true,
+      "active_model": "qwen3-4b-lulu",
+      "models": {
+        "qwen2-1.5b": {
+          "model_path": "model/Qwen2-1___5B-Instruct_W8A8_RK3588.rkllm",
+          "max_context_length": 4096,
+          "max_new_tokens": 512,
+          "description": "Qwen2-1.5B Instruct"
+        },
+        "qwen2-3b": {
+          "model_path": "model/Qwen2-3B-Instruct_W8A8_RK3588.rkllm",
+          "max_context_length": 4096,
+          "max_new_tokens": 512,
+          "description": "Qwen2-3B Instruct"
+        },
+        "qwen2.5-7b": {
+          "model_path": "model/Qwen2___5-7B-Instruct_W8A8_RK3588.rkllm",
+          "max_context_length": 4096,
+          "max_new_tokens": 512,
+          "description": "Qwen2.5-7B Instruct"
+        },
+        "qwen3-4b-lulu": {
+          "model_path": "model/Qwen3-4B-Instruct-2507_w8a8_RK3588_Lulu.rkllm",
+          "max_context_length": 4096,
+          "max_new_tokens": 512,
+          "description": "Qwen3-4B Instruct Lulu 特调"
+        }
+      }
+    },
+    "embedding": {
+      "enabled": true,
+      "active_model": "bge",
+      "models": {
+        "minilm": {
+          "model_path": "model/all-MiniLM-L6-v2-no-norm-fp16.rknn",
+          "vocab_path": "tokenizer/vocab.txt",
+          "max_length": 256,
+          "embedding_dim": 384,
+          "description": "MiniLM-L6-v2"
+        },
+        "bge": {
+          "model_path": "model/bge-small-zh-v1.5-512.rknn",
+          "vocab_path": "tokenizer/bge-small-zh-v1___5/vocab.txt",
+          "max_length": 256,
+          "embedding_dim": 512,
+          "description": "BGE Small ZH"
+        }
+      }
+    }
+  },
+  "tools": {
+    "tools_config": {
+      "get_current_datetime": {
+        "enabled": true,
+        "description": "获取当前日期和时间"
+      }
+    }
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8080,
+    "log_file": "server.log",
+    "log_level": "info",
+    "log_max_size": 10,
+    "log_max_backups": 5,
+    "performance_mode": "balanced"
+  }
+}

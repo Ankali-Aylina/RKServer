@@ -1,0 +1,111 @@
+# ========================
+# Build Output
+# ========================
+build/
+cmake-build-*/
+out/
+
+# ========================
+# Compiled Object Files
+# ========================
+*.o
+*.o.d
+*.obj
+*.exe
+*.out
+*.app
+*.a
+*.so
+*.dylib
+*.dll
+*.lib
+*.exp
+*.pdb
+*.ilk
+
+# ========================
+# CMake Generated
+# ========================
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+Makefile
+CTestTestfile.cmake
+compile_commands.json
+*.cmake
+!CMakeLists.txt
+
+# ========================
+# IDE / Editor
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.~lock.*
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+.settings/
+*.code-workspace
+
+# ========================
+# OS Files
+# ========================
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ========================
+# Runtime / Logs
+# ========================
+*.log
+server.log
+*.pid
+*.seed
+
+# ========================
+# Dependencies (submodule build artifacts)
+# ========================
+# Crow submodule local build artifacts
+Crow/build/
+Crow/CMakeFiles/
+Crow/cmake_install.cmake
+Crow/Makefile
+Crow/CrowConfig.cmake
+Crow/cmake_uninstall.cmake
+
+# nlohmann/json submodule local build artifacts
+json/build/
+json/CMakeFiles/
+json/cmake_install.cmake
+json/Makefile
+json/nlohmann_json.pc
+json/nlohmann_jsonConfig.cmake
+json/nlohmann_jsonConfigVersion.cmake
+
+# ========================
+# Environment / Config
+# ========================
+.env
+.env.local
+*.env
+
+# ========================
+# Model Files (user-provided, not tracked)
+# ========================
+*.rkllm
+*.rknn
+
+# ========================
+# tokenizer
+# ========================
+tokenizer/*

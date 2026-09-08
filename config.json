@@ -2,7 +2,7 @@
   "models": {
     "llm": {
       "enabled": true,
-      "active_model": "qwen3-4b-lulu",
+      "active_model": "qwen2.5-code-3b",
       "models": {
         "qwen2-1.5b": {
           "model_path": "model/Qwen2-1___5B-Instruct_W8A8_RK3588.rkllm",
@@ -22,6 +22,12 @@
           "max_new_tokens": 512,
           "description": "Qwen2.5-7B Instruct"
         },
+        "qwen2.5-code-3b": {
+          "model_path": "model/Qwen2.5-Coder-3B-Instruct_w8a8_g128_rk3588.rkllm",
+          "max_context_length": 4096,
+          "max_new_tokens": 512,
+          "description": "Qwen2.5-3B Code Instruct"
+        },
         "qwen3-4b-lulu": {
           "model_path": "model/Qwen3-4B-Instruct-2507_w8a8_RK3588_Lulu.rkllm",
           "max_context_length": 4096,
@@ -36,7 +42,7 @@
       "models": {
         "minilm": {
           "model_path": "model/all-MiniLM-L6-v2-no-norm-fp16.rknn",
-          "vocab_path": "tokenizer/vocab.txt",
+          "vocab_path": "tokenizer/all-MiniLM-L6-v2-tokenizer/vocab.txt",
           "max_length": 256,
           "embedding_dim": 384,
           "description": "MiniLM-L6-v2"
@@ -54,7 +60,7 @@
   "tools": {
     "tools_config": {
       "get_current_datetime": {
-        "enabled": true,
+        "enabled": false,
         "description": "获取当前日期和时间"
       }
     }

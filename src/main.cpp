@@ -16,18 +16,17 @@
  */
 
 #include <iostream>
-#include "logger.h"
-#include "llm_model.h"
+
+#include "config_manager.h"
 #include "embedding_model.h"
 #include "http_server.h"
-#include "config_manager.h"
+#include "llm_model.h"
+#include "logger.h"
 
-int main()
-{
+int main() {
     // ==================== 步骤 1: 加载配置文件 ====================
-    auto &config = ConfigManager::getInstance();
-    if (!config.load("config.json"))
-    {
+    auto& config = ConfigManager::getInstance();
+    if (!config.load("config.json")) {
         std::cerr << "Failed to load config.json, using defaults" << std::endl;
     }
 
@@ -39,9 +38,8 @@ int main()
     LOG_INFO("Configuration loaded from: config.json");
 
     // ==================== 步骤 3: 初始化 LLM 模型（如果启用） ====================
-    LLMModel *llm_model = nullptr;
-    if (config.isLLMEnabled())
-    {
+    LLMModel* llm_model = nullptr;
+    if (config.isLLMEnabled()) {
         std::string active_model = config.getActiveLLMModel();
         auto model_config = config.getLLMModelConfig(active_model);
 
@@ -50,54 +48,44 @@ int main()
         LOG_INFO("max_new_tokens: " + std::to_string(model_config.max_new_tokens));
 
         llm_model = &LLMModel::getInstance();
-        if (!llm_model->initialize(model_config.model_path, model_config.max_new_tokens))
-        {
+        if (!llm_model->initializeWithConfig()) {
             LOG_ERROR("Failed to initialize LLM model");
             llm_model = nullptr;
-        }
-        else
-        {
+        } else {
             LOG_INFO("LLM initialized successfully: " + llm_model->getModelName());
 
             // ==================== 步骤 4: 注册内置工具 ====================
             LOG_INFO("Registering builtin tools...");
-            llm_model->registerBuiltinTools();
+
             LOG_INFO("Builtin tools registered successfully");
         }
-    }
-    else
-    {
+    } else {
         LOG_INFO("LLM model is disabled in configuration");
     }
 
     // ==================== 步骤 5: 初始化 Embedding 模型（如果启用） ====================
-    EmbeddingModel *emb_model = nullptr;
-    if (config.isEmbeddingEnabled())
-    {
+    EmbeddingModel* emb_model = nullptr;
+    if (config.isEmbeddingEnabled()) {
         emb_model = &EmbeddingModel::getInstance();
 
-        if (!emb_model->initializeWithConfig(config.getConfigPath()))
-        {
+        if (!emb_model->initializeWithConfig(config.getConfigPath())) {
             LOG_ERROR("Failed to initialize Embedding model with config");
             emb_model = nullptr;
-        }
-        else
-        {
+        } else {
             LOG_INFO("Embedding initialized successfully: " + emb_model->getCurrentModel());
             auto models = emb_model->getAvailableModels();
             std::string models_str;
-            for (const auto &m : models)
+            for (const auto& m : models)
                 models_str += m + " ";
             LOG_INFO("Available embedding models: " + models_str);
         }
-    }
-    else
-    {
+    } else {
         LOG_INFO("Embedding model is disabled in configuration");
     }
 
     // ==================== 步骤 6: 创建并启动 HTTP 服务器 ====================
-    LOG_INFO("Starting HTTP server on " + server_config.host + ":" + std::to_string(server_config.port));
+    LOG_INFO("Starting HTTP server on " + server_config.host + ":" +
+             std::to_string(server_config.port));
 
     HttpServer server(server_config.port);
 
@@ -114,15 +102,13 @@ int main()
     LOG_INFO("=== Starting graceful shutdown ===");
     LOG_INFO("Cleaning up resources...");
 
-    if (llm_model)
-    {
+    if (llm_model) {
         LOG_INFO("Cleaning up LLM model...");
         llm_model->cleanup();
         LOG_INFO("LLM model cleaned up");
     }
 
-    if (emb_model)
-    {
+    if (emb_model) {
         LOG_INFO("Cleaning up Embedding model...");
         emb_model->cleanup();
         LOG_INFO("Embedding model cleaned up");

@@ -1,0 +1,62 @@
+---
+# 基于 Google 风格，并作个性化调整
+BasedOnStyle: Google
+
+# 缩进宽度（空格数）
+IndentWidth: 4
+
+# 使用空格代替 Tab
+UseTab: Never
+
+# 列宽限制（超过则换行）
+ColumnLimit: 100
+
+# 函数定义：除非极短，否则不放在一行
+AllowShortFunctionsOnASingleLine: None
+
+# if 语句：除非没有 else 且极短，否则不放在一行
+AllowShortIfStatementsOnASingleLine: Never
+
+# 循环：不允许放在一行
+AllowShortLoopsOnASingleLine: false
+
+# 大括号放置：附加到上一行（Attach），即 K&R 风格
+BreakBeforeBraces: Attach
+
+# 控制语句（if/for/while）后强制加空格
+SpaceBeforeParens: ControlStatements
+
+# 指针/引用对齐：左对齐（int* ptr;）
+PointerAlignment: Left
+
+# 访问修饰符（public/private）缩进
+AccessModifierOffset: -4
+
+# 构造函数初始化列表换行
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+# 允许将参数放在多行时对齐
+AlignAfterOpenBracket: Align
+
+# 连续赋值对齐
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+
+# 注释对齐
+AlignTrailingComments: true
+
+# 允许在块内缩进 case 标签
+IndentCaseLabels: false
+
+# 最大连续空行数
+MaxEmptyLinesToKeep: 1
+
+# 命名空间缩进
+NamespaceIndentation: None
+
+# 预处理指令缩进
+IndentPPDirectives: None
+
+# 每行字符数超过列宽时的惩罚因子（可忽略）
+PenaltyExcessCharacter: 100
+PenaltyReturnTypeOnItsOwnLine: 60
